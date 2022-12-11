@@ -35,4 +35,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: curl -s http://localhost:3000/
+        run: curl -L http://localhost:3000/
