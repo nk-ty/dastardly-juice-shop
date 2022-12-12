@@ -26,12 +26,14 @@ jobs:
         # Docker Hub image
         image: bkimminich/juice-shop
         ports:
-          - 3000:3000
+          - 80:3000
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Run wget
-        run: wget http://localhost:3000/#/
+      - name: Run Dastardly Action Step
+        uses: PortSwigger/dastardly-github-action@main
+        with:
+         target-url: 'https://localhost'
