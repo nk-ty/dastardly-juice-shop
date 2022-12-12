@@ -26,7 +26,7 @@ jobs:
         # Docker Hub image
         image: bkimminich/juice-shop
         ports:
-          - 80:3000
+          - 3000:3000
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -36,4 +36,4 @@ jobs:
       - name: Run Dastardly Action Step
         uses: PortSwigger/dastardly-github-action@main
         with:
-         target-url: 'http://localhost'
+         target-url: 'http://localhost:3000/#/'
