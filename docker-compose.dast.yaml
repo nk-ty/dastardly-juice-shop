@@ -1,0 +1,17 @@
+services:
+  juice-shop:
+    container_name: juice-shop
+    image: bkimminich/juice-shop:latest
+    ports:
+      - "80:3000"
+
+  dastardly:
+    container_name: dastardly
+    image: public.ecr.aws/portswigger/dastardly:latest
+    depends_on:
+      - juice-shop
+    volumes:
+      - .:/tmp
+    environment:
+      - DASTARDLY_TARGET_URL=http://juice-shop:3000
+      - DASTARDLY_OUTPUT_FILE=/tmp/dastardly-report.xml
