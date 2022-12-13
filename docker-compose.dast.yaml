@@ -14,4 +14,4 @@ services:
       - .:/tmp
     environment:
       - DASTARDLY_TARGET_URL=http://juice-shop:3000
-      - DASTARDLY_OUTPUT_FILE=/tmp/dastardly-report.xml
+      - DASTARDLY_OUTPUT_FILE=./dastardly-report.xml
