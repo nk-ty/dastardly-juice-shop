@@ -19,21 +19,13 @@ jobs:
   scan:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
-    services:
-      # Label used to access the service container
-      juice-shop:
-        # Docker Hub image
-        image: bkimminich/juice-shop
-        ports:
-          - 3000:3000
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
       - name: Run Dastardly Action Step
-        uses: PortSwigger/dastardly-github-action@main
-        with:
-         target-url: 'http://localhost:3000/#/'
+        run: docker compose -f docker-compose.dast.yaml up
+
+      - name: Check report
+        run: ls -lt
