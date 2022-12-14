@@ -24,7 +24,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Run Dastardly Action Step
+      - name: Pull images
+        run: |
+          docker pull bkimminich/juice-shop:latest
+          docker pull public.ecr.aws/portswigger/dastardly:latest
+
+      - name: Run Dastardly
         run: docker compose -f docker-compose.dast.yaml up
 
       - name: Check report

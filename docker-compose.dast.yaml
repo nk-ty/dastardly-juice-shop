@@ -7,11 +7,13 @@ services:
 
   dastardly:
     container_name: dastardly
-    image: public.ecr.aws/portswigger/dastardly:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dastardly
     depends_on:
       - juice-shop
     volumes:
-      - .:/tmp
+      - .:/report/
     environment:
       - DASTARDLY_TARGET_URL=http://juice-shop:3000
-      - DASTARDLY_OUTPUT_FILE=./dastardly-report.xml
+      - DASTARDLY_OUTPUT_FILE=/report/dastardly-report.xml
