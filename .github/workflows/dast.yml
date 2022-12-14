@@ -17,7 +17,7 @@ on:
 jobs:
 
   scan:
-    timeout-minutes: 30
+    timeout-minutes: 90
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
