@@ -1,0 +1,4 @@
+FROM public.ecr.aws/portswigger/dastardly:latest
+
+USER root
+RUN mkdir -m a=rw /report/
